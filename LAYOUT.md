@@ -10,6 +10,14 @@ Mirrors SiteForge `docs/PULSE_MAGAZINE_LAYOUT_CONTRACT.md`.
 5. Footer            — wordmark + short links
 ```
 
+## Craft (publisher bar)
+
+- Masthead: chartreuse strike mark + large Archivo wordmark (brand owns chrome).
+- Featured lead: **overlay package** — full-bleed media plane, gradient scrim, copy anchored bottom. Hero budget only.
+- Story river: section rule + meta rail (desktop); first item louder.
+- Packages: accent bar header; package-lead + supporting grid; live = amber pulse.
+- Motion: brand rise, lead rise + media ken, river stagger, nav underline, live pulse.
+
 ## Component map
 
 | Section | File |

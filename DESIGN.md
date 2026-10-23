@@ -23,6 +23,25 @@ Canonical SiteForge source: [Design.md §4.6](https://github.com/josecarlospm/si
 
 Load via `data-theme="pulse-magazine"` (see `src/index.html` + `src/design-tokens.css`).
 
+## Kickstart refinements (DRE-126 redesign)
+
+These stay compatible with §4.6 palette; they raise editorial craft only:
+
+| Addition | Why |
+|---|---|
+| `--container-max-w: 1240px` | Magazine measure for lead + river density |
+| `--text-display` | Loud lead headline scale |
+| `--color-atmosphere` | Soft radial washes — not a flat slab |
+| `--lead-min-h` | First-viewport lead plane budget |
+| `--backdrop-blur` | Sticky masthead glass |
+| Film grain overlay in `styles.css` | Subtle newsroom texture |
+
+## Layout craft notes
+
+- **Lead** is one composition: full-bleed media + bottom-overlaid copy (scrim), not stacked image-then-text.
+- **River** uses a meta rail on wide viewports; first row is a louder lead item.
+- **Packages** use a left accent bar; first story in each package is the package lead; live packages use amber + pulsed mark.
+
 ## Anti-slop
 
 - No cream / oat + serif + terracotta
