@@ -29,7 +29,7 @@ import { ThemedPackagesComponent } from './layout/themed-packages.component';
   styles: `
     .shell {
       min-height: 100vh;
-      background: var(--color-bg);
+      position: relative;
     }
   `,
 })

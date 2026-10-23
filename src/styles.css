@@ -16,11 +16,26 @@ html,
 body {
   min-height: 100%;
   background-color: var(--color-bg);
+  background-image: var(--color-atmosphere);
+  background-attachment: fixed;
   color: var(--color-text-main);
   font-family: var(--font-body);
   font-size: var(--text-base);
   line-height: var(--line-height-normal);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Film grain — subtle texture plane, not decoration spam */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
 }
 
 h1,
@@ -31,8 +46,8 @@ h5,
 h6 {
   font-family: var(--font-heading);
   line-height: var(--line-height-tight);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  letter-spacing: -0.035em;
 }
 
 img {
@@ -65,31 +80,43 @@ button:focus-visible {
 @keyframes pf-rise {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes pf-underline {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
   }
 }
 
 @keyframes pf-stagger-in {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes pf-live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(0.85);
+  }
+}
+
+@keyframes pf-media-ken {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1);
   }
 }
 
@@ -100,5 +127,9 @@ button:focus-visible {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  body::before {
+    display: none;
   }
 }
