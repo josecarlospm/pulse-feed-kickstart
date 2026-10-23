@@ -15,6 +15,7 @@ html {
 html,
 body {
   min-height: 100%;
+  /* Solid page ink — atmosphere is soft, not a second chrome palette */
   background-color: var(--color-bg);
   background-image: var(--color-atmosphere);
   background-attachment: fixed;
@@ -24,6 +25,11 @@ body {
   line-height: var(--line-height-normal);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Kill any browser default that paints chrome differently from --color-bg */
+:root {
+  color-scheme: dark;
 }
 
 /* Film grain — subtle texture plane, not decoration spam */

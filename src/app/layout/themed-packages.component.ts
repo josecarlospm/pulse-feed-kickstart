@@ -167,10 +167,17 @@ import type { ThemedPackage } from '../content/sample-stories';
     }
 
     .package__byline {
+      font-family: var(--font-heading);
       font-size: var(--text-xs);
-      color: var(--color-secondary);
-      font-weight: 600;
+      color: var(--color-primary);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
       margin-top: var(--spacing-1);
+    }
+
+    .package--live .package__byline {
+      color: var(--color-accent);
     }
 
     @media (min-width: 800px) {

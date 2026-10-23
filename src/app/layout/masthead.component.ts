@@ -1,112 +1,151 @@
-import { Component, input } from '@angular/core';
+import { Component, input, linkedSignal } from '@angular/core';
+import type { NavItem } from '../content/sample-stories';
 
 @Component({
   selector: 'pf-masthead',
   template: `
     <header class="masthead">
-      <div class="pf-container masthead__inner">
-        <a class="masthead__brand" href="#top" [attr.aria-label]="brand() + ' home'">
-          <span class="masthead__mark" aria-hidden="true"></span>
-          <span class="masthead__word">{{ brand() }}</span>
-        </a>
+      <div class="pf-container">
+        <div class="masthead__top">
+          <a class="masthead__brand" href="#top" [attr.aria-label]="brand() + ' home'">
+            {{ brand() }}
+          </a>
+          <a class="masthead__cta" href="#about">Follow</a>
+        </div>
         <nav class="masthead__nav" aria-label="Sections">
-          @for (item of nav(); track item.href + item.label) {
-            <a class="masthead__link" [href]="item.href">{{ item.label }}</a>
-          }
+          <div class="masthead__track">
+            @for (item of nav(); track item.href + item.label) {
+              <a
+                class="masthead__pill"
+                [class.masthead__pill--active]="activeHref() === item.href"
+                [href]="item.href"
+                (click)="activeHref.set(item.href)"
+              >
+                {{ item.label }}
+              </a>
+            }
+          </div>
         </nav>
       </div>
     </header>
   `,
   styles: `
     .masthead {
+      /* Solid chrome — same ink as page (no glass / second palette) */
+      background: var(--color-bg);
       border-bottom: var(--border-width) solid var(--color-border);
-      background: color-mix(in srgb, var(--color-bg) 88%, transparent);
-      backdrop-filter: blur(var(--backdrop-blur));
-      -webkit-backdrop-filter: blur(var(--backdrop-blur));
       position: sticky;
       top: 0;
       z-index: 30;
     }
 
-    .masthead__inner {
+    .masthead__top {
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: var(--spacing-4) var(--spacing-8);
+      gap: var(--spacing-4);
       padding-block: var(--spacing-4);
     }
 
     .masthead__brand {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--spacing-3);
+      font-family: var(--font-heading);
+      font-size: clamp(1.65rem, 5vw, 2.35rem);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: var(--color-text-main);
       animation: pf-rise var(--transition-normal) var(--ease-out) both;
     }
 
-    .masthead__mark {
-      width: 0.55rem;
-      height: 1.85rem;
-      background: var(--color-primary);
+    /* Same primary as active pill + bylines — one accent system */
+    .masthead__cta {
       flex-shrink: 0;
+      font-family: var(--font-heading);
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-bg);
+      background: var(--color-primary);
+      padding: 0.55rem 0.9rem;
+      border-radius: var(--radius-btn);
+      transition: background var(--transition-fast);
     }
 
-    .masthead__word {
-      font-family: var(--font-heading);
-      font-size: clamp(1.85rem, 4.5vw, 2.75rem);
-      font-weight: 800;
-      letter-spacing: -0.045em;
-      line-height: 1;
-      color: var(--color-text-main);
+    .masthead__cta:hover,
+    .masthead__cta:focus-visible {
+      background: var(--color-primary-hover);
     }
 
     .masthead__nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--spacing-3) var(--spacing-5);
+      padding-bottom: var(--spacing-4);
     }
 
-    .masthead__link {
-      position: relative;
-      font-size: var(--text-xs);
-      font-weight: 700;
-      color: var(--color-text-muted);
+    .masthead__track {
+      display: flex;
+      gap: var(--spacing-1);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 0.2rem;
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      border: var(--border-width) solid var(--color-border);
+    }
+
+    .masthead__track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .masthead__pill {
+      flex: 0 0 auto;
+      font-family: var(--font-heading);
+      font-size: 0.6875rem;
+      font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding-bottom: 0.2rem;
+      color: var(--color-text-main);
+      padding: 0.55rem 0.85rem;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+      transition:
+        color var(--transition-fast),
+        background var(--transition-fast);
     }
 
-    .masthead__link::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 2px;
+    .masthead__pill--active {
       background: var(--color-primary);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform var(--transition-fast);
+      color: var(--color-bg);
     }
 
-    .masthead__link:hover,
-    .masthead__link:focus-visible {
+    .masthead__pill:not(.masthead__pill--active):hover,
+    .masthead__pill:not(.masthead__pill--active):focus-visible {
       color: var(--color-primary);
     }
 
-    .masthead__link:hover::after,
-    .masthead__link:focus-visible::after {
-      transform: scaleX(1);
-    }
-
     @media (min-width: 768px) {
-      .masthead__inner {
-        padding-block: var(--spacing-5);
+      .masthead__top {
+        padding-block: var(--spacing-5) var(--spacing-3);
+      }
+
+      .masthead__nav {
+        padding-bottom: var(--spacing-5);
+      }
+
+      .masthead__pill {
+        font-size: var(--text-xs);
+        padding: 0.6rem 1.05rem;
       }
     }
   `,
 })
 export class MastheadComponent {
   readonly brand = input.required<string>();
-  readonly nav = input.required<readonly { label: string; href: string }[]>();
+  readonly nav = input.required<readonly NavItem[]>();
+
+  /** Tracks section pill; reseeds when nav content changes. */
+  readonly activeHref = linkedSignal(() => {
+    const items = this.nav();
+    return items.find((i) => i.active)?.href ?? items[0]?.href ?? '#top';
+  });
 }

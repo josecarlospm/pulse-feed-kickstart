@@ -100,9 +100,10 @@ import type { Story } from '../content/sample-stories';
 
     .river__cat {
       color: var(--color-primary);
+      font-family: var(--font-heading);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      font-weight: 500;
+      font-weight: 800;
     }
 
     .river__sep {
@@ -136,9 +137,12 @@ import type { Story } from '../content/sample-stories';
     }
 
     .river__byline {
+      font-family: var(--font-heading);
       font-size: var(--text-xs);
-      color: var(--color-secondary);
-      font-weight: 600;
+      color: var(--color-primary);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     .river__item--lead .river__headline {

@@ -33,11 +33,21 @@ These stay compatible with §4.6 palette; they raise editorial craft only:
 | `--text-display` | Loud lead headline scale |
 | `--color-atmosphere` | Soft radial washes — not a flat slab |
 | `--lead-min-h` | First-viewport lead plane budget |
-| `--backdrop-blur` | Sticky masthead glass |
 | Film grain overlay in `styles.css` | Subtle newsroom texture |
+
+## Chrome cohesion (one accent system)
+
+`--color-primary` (chartreuse) must paint **all** interactive chrome the same way:
+
+- Masthead **Follow** CTA fill
+- Active section **pill** fill
+- Category labels + author bylines
+
+Masthead background is solid `--color-bg` — never frosted glass or a second gray band that reads as another palette. Amber (`--color-accent`) stays reserved for live/breaking packages only.
 
 ## Layout craft notes
 
+- **Masthead** = brand row + chartreuse CTA + horizontal section pills (active = primary fill).
 - **Lead** is one composition: full-bleed media + bottom-overlaid copy (scrim), not stacked image-then-text.
 - **River** uses a meta rail on wide viewports; first row is a louder lead item.
 - **Packages** use a left accent bar; first story in each package is the package lead; live packages use amber + pulsed mark.

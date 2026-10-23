@@ -12,11 +12,11 @@ Mirrors SiteForge `docs/PULSE_MAGAZINE_LAYOUT_CONTRACT.md`.
 
 ## Craft (publisher bar)
 
-- Masthead: chartreuse strike mark + large Archivo wordmark (brand owns chrome).
-- Featured lead: **overlay package** — full-bleed media plane, gradient scrim, copy anchored bottom. Hero budget only.
-- Story river: section rule + meta rail (desktop); first item louder.
-- Packages: accent bar header; package-lead + supporting grid; live = amber pulse.
-- Motion: brand rise, lead rise + media ken, river stagger, nav underline, live pulse.
+- Masthead: solid `--color-bg` chrome; large Archivo wordmark; chartreuse **Follow** CTA; section **pills** with chartreuse active fill (same accent as bylines — one palette).
+- Featured lead: **overlay package** — full-bleed media plane, gradient scrim, copy anchored bottom; author in primary. Hero budget only.
+- Story river: section rule + meta rail (desktop); first item louder; authors in primary.
+- Packages: accent bar header; package-lead + supporting grid; live = amber pulse only.
+- Motion: brand rise, lead rise + media ken, river stagger, live pulse.
 
 ## Component map
 
