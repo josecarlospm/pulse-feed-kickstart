@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Dim newsroom desk with stacked monitors">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B0C0E"/>
+      <stop offset="55%" stop-color="#14161A"/>
+      <stop offset="100%" stop-color="#1C1F26"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2A3140"/>
+      <stop offset="100%" stop-color="#12151C"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#C8FF2A" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#C8FF2A" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="rgba(244,245,247,0.04)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <!-- desk plane -->
+  <path d="M0 640 L1600 580 L1600 900 L0 900 Z" fill="#0A0B0D"/>
+  <path d="M0 640 L1600 580 L1600 596 L0 656 Z" fill="#1A1D24"/>
+  <!-- left monitor -->
+  <rect x="180" y="220" width="420" height="280" rx="4" fill="#0E1014" stroke="rgba(255,255,255,0.12)"/>
+  <rect x="198" y="238" width="384" height="230" fill="url(#screen)"/>
+  <rect x="220" y="270" width="160" height="10" rx="1" fill="#C8FF2A" opacity="0.85"/>
+  <rect x="220" y="300" width="280" height="8" rx="1" fill="#8B919A" opacity="0.55"/>
+  <rect x="220" y="320" width="240" height="8" rx="1" fill="#8B919A" opacity="0.4"/>
+  <rect x="220" y="340" width="200" height="8" rx="1" fill="#8B919A" opacity="0.3"/>
+  <rect x="360" y="500" width="60" height="70" fill="#12151A"/>
+  <rect x="300" y="568" width="180" height="14" rx="2" fill="#1C1F26"/>
+  <!-- center monitor -->
+  <rect x="560" y="140" width="560" height="360" rx="4" fill="#0E1014" stroke="rgba(255,255,255,0.14)"/>
+  <rect x="580" y="160" width="520" height="300" fill="url(#screen)"/>
+  <rect x="580" y="160" width="520" height="120" fill="url(#glow)"/>
+  <rect x="620" y="220" width="220" height="14" rx="1" fill="#F4F5F7" opacity="0.9"/>
+  <rect x="620" y="250" width="340" height="10" rx="1" fill="#8B919A" opacity="0.5"/>
+  <rect x="620" y="280" width="300" height="10" rx="1" fill="#8B919A" opacity="0.35"/>
+  <rect x="620" y="320" width="180" height="90" rx="2" fill="#FF6A1A" opacity="0.25"/>
+  <rect x="820" y="320" width="180" height="90" rx="2" fill="#C8FF2A" opacity="0.12"/>
+  <rect x="800" y="500" width="80" height="90" fill="#12151A"/>
+  <rect x="720" y="588" width="240" height="16" rx="2" fill="#1C1F26"/>
+  <!-- right monitor -->
+  <rect x="1080" y="250" width="340" height="240" rx="4" fill="#0E1014" stroke="rgba(255,255,255,0.1)"/>
+  <rect x="1096" y="266" width="308" height="190" fill="url(#screen)"/>
+  <rect x="1120" y="300" width="120" height="8" rx="1" fill="#FF6A1A" opacity="0.8"/>
+  <rect x="1120" y="328" width="220" height="8" rx="1" fill="#8B919A" opacity="0.45"/>
+  <rect x="1120" y="348" width="180" height="8" rx="1" fill="#8B919A" opacity="0.3"/>
+  <rect x="1220" y="490" width="50" height="60" fill="#12151A"/>
+  <rect x="1170" y="548" width="150" height="12" rx="2" fill="#1C1F26"/>
+  <!-- keyboard -->
+  <rect x="520" y="700" width="420" height="48" rx="4" fill="#15181F" stroke="rgba(255,255,255,0.08)"/>
+  <g fill="#2A303A">
+    <rect x="540" y="714" width="28" height="18" rx="2"/>
+    <rect x="578" y="714" width="28" height="18" rx="2"/>
+    <rect x="616" y="714" width="28" height="18" rx="2"/>
+    <rect x="654" y="714" width="28" height="18" rx="2"/>
+    <rect x="692" y="714" width="28" height="18" rx="2"/>
+    <rect x="730" y="714" width="28" height="18" rx="2"/>
+    <rect x="768" y="714" width="28" height="18" rx="2"/>
+    <rect x="806" y="714" width="28" height="18" rx="2"/>
+    <rect x="844" y="714" width="60" height="18" rx="2"/>
+  </g>
+</svg>

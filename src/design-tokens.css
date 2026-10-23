@@ -1,0 +1,65 @@
+/* SiteForge Design.md §4.6 — pulse-magazine (Pulse Wire) */
+:root {
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --container-max-w: 1120px;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+
+  --line-height-tight: 1.15;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.65;
+
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root,
+:root[data-theme='pulse-magazine'] {
+  --color-bg: #0b0c0e;
+  --color-surface: #14161a;
+  --color-surface-muted: #1c1f26;
+  --color-text-main: #f4f5f7;
+  --color-text-muted: #8b919a;
+  --color-primary: #c8ff2a;
+  --color-primary-hover: #b8ef1a;
+  --color-secondary: #7a8494;
+  --color-secondary-hover: #636c7a;
+  --color-accent: #ff6a1a;
+  --color-accent-hover: #e55c12;
+  --color-border: rgba(255, 255, 255, 0.12);
+
+  --font-heading: 'Archivo', system-ui, sans-serif;
+  --font-body: 'Source Sans 3', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --border-width: 1px;
+  --radius-sm: 1px;
+  --radius-md: 2px;
+  --radius-lg: 4px;
+  --radius-pill: 2px;
+  --radius-card: 2px;
+  --radius-btn: 2px;
+
+  --shadow-flat: none;
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.45);
+  --shadow-ambient: 0 1px 4px rgba(0, 0, 0, 0.35);
+  --shadow-button: 0 2px 8px rgba(200, 255, 42, 0.22);
+  --backdrop-blur: 0px;
+}
