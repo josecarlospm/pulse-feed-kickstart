@@ -77,7 +77,7 @@
   --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.45);
   --shadow-ambient: 0 1px 4px rgba(0, 0, 0, 0.35);
   --shadow-button: 0 2px 8px rgba(200, 255, 42, 0.22);
-  --backdrop-blur: 12px;
+  --backdrop-blur: 0px;
 
-  --lead-min-h: min(72vh, 640px);
+  --lead-min-h: min(78vh, 680px);
 }

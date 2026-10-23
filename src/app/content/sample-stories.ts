@@ -18,10 +18,17 @@ export interface ThemedPackage {
   readonly stories: readonly Story[];
 }
 
+export interface NavItem {
+  readonly label: string;
+  readonly href: string;
+  /** Seeds the chartreuse active pill in the masthead. */
+  readonly active?: boolean;
+}
+
 export interface PulseFeedContent {
   readonly brand: string;
   readonly tagline: string;
-  readonly nav: readonly { readonly label: string; readonly href: string }[];
+  readonly nav: readonly NavItem[];
   readonly featured: Story & { readonly imageAlt: string };
   readonly river: readonly Story[];
   readonly packages: readonly ThemedPackage[];
@@ -32,10 +39,10 @@ export const PULSE_FEED_CONTENT: PulseFeedContent = {
   brand: 'Pulse Feed',
   tagline: 'Tech signals for people who ship.',
   nav: [
-    { label: 'AI', href: '#river' },
+    { label: 'Top Stories', href: '#top', active: true },
+    { label: 'Latest', href: '#river' },
     { label: 'Gadgets', href: '#gadgets' },
     { label: 'Policy', href: '#policy' },
-    { label: 'Chips', href: '#river' },
   ],
   featured: {
     id: 'lead-1',
@@ -45,7 +52,7 @@ export const PULSE_FEED_CONTENT: PulseFeedContent = {
     author: 'Mira Chen',
     publishedAt: '2026-10-22T14:00:00Z',
     relativeTime: '6h ago',
-    imageAlt: 'Dim newsroom desk with stacked monitors casting cool light across a keyboard',
+    imageAlt: 'Dark product display showing app tiles under cool red ambient light',
   },
   river: [
     {
