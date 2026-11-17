@@ -15,12 +15,11 @@ import type { Story } from '../content/sample-stories';
             <li
               class="river__item"
               [class.river__item--lead]="i === 0"
-              [style.animation-delay]="i * 45 + 'ms'"
+              [style.animation-delay]="i * 40 + 'ms'"
             >
               <article class="river__story">
                 <p class="river__meta">
                   <span class="river__cat">{{ story.category }}</span>
-                  <span class="river__sep" aria-hidden="true">·</span>
                   <time [attr.datetime]="story.publishedAt">{{ story.relativeTime }}</time>
                 </p>
                 <div class="river__body">
@@ -48,7 +47,7 @@ import type { Story } from '../content/sample-stories';
       display: flex;
       align-items: center;
       gap: var(--spacing-4);
-      margin-bottom: var(--spacing-8);
+      margin-bottom: var(--spacing-6);
     }
 
     .river__heading {
@@ -63,8 +62,8 @@ import type { Story } from '../content/sample-stories';
     .river__rule {
       flex: 1;
       height: 2px;
-      background: linear-gradient(to right, var(--color-primary), transparent 70%);
-      opacity: 0.85;
+      background: linear-gradient(to right, var(--color-primary), transparent 72%);
+      opacity: 0.9;
     }
 
     .river__list {
@@ -75,7 +74,7 @@ import type { Story } from '../content/sample-stories';
 
     .river__item {
       border-bottom: var(--border-width) solid var(--color-border);
-      animation: pf-stagger-in 480ms var(--ease-out) both;
+      animation: pf-stagger-in 420ms var(--ease-out) both;
     }
 
     .river__item:first-child {
@@ -84,8 +83,8 @@ import type { Story } from '../content/sample-stories';
 
     .river__story {
       display: grid;
-      gap: var(--spacing-3);
-      padding-block: var(--spacing-6);
+      gap: var(--spacing-2);
+      padding-block: var(--spacing-5);
     }
 
     .river__meta {
@@ -94,8 +93,8 @@ import type { Story } from '../content/sample-stories';
       color: var(--color-secondary);
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
-      gap: var(--spacing-2);
+      align-items: baseline;
+      gap: var(--spacing-2) var(--spacing-3);
     }
 
     .river__cat {
@@ -106,17 +105,16 @@ import type { Story } from '../content/sample-stories';
       font-weight: 800;
     }
 
-    .river__sep {
-      opacity: 0.5;
-    }
-
     .river__headline {
-      font-size: clamp(1.2rem, 2.6vw, 1.65rem);
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
       font-weight: 800;
+      font-variation-settings: var(--font-display-settings);
       margin-bottom: var(--spacing-2);
-      max-width: 34ch;
-      line-height: var(--line-height-snug);
-      letter-spacing: -0.03em;
+      max-width: 36ch;
+      line-height: var(--line-height-tight);
+      letter-spacing: -0.035em;
+      overflow-wrap: break-word;
+      min-width: 0;
     }
 
     .river__headline a {
@@ -146,19 +144,24 @@ import type { Story } from '../content/sample-stories';
     }
 
     .river__item--lead .river__headline {
-      font-size: clamp(1.45rem, 3.2vw, 2.1rem);
-      max-width: 28ch;
+      font-size: clamp(1.55rem, 3.4vw, 2.35rem);
+      max-width: 26ch;
+      font-weight: 900;
     }
 
     .river__item--lead .river__dek {
       font-size: var(--text-base);
     }
 
+    .river__item--lead .river__story {
+      padding-block: var(--spacing-8);
+    }
+
     @media (min-width: 900px) {
       .river__story {
-        grid-template-columns: 9.5rem minmax(0, 1fr);
+        grid-template-columns: 10rem minmax(0, 1fr);
         gap: var(--spacing-8);
-        padding-block: var(--spacing-6);
+        padding-block: var(--spacing-5);
         align-items: start;
       }
 
@@ -166,15 +169,15 @@ import type { Story } from '../content/sample-stories';
         flex-direction: column;
         align-items: flex-start;
         gap: var(--spacing-1);
-        padding-top: 0.35rem;
-      }
-
-      .river__sep {
-        display: none;
+        padding-top: 0.2rem;
       }
 
       .river__item--lead .river__story {
         padding-block: var(--spacing-10);
+      }
+
+      .river__item--lead .river__headline {
+        font-size: clamp(1.85rem, 2.8vw, 2.55rem);
       }
     }
   `,

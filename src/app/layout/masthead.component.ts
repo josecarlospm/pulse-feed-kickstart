@@ -7,11 +7,13 @@ import type { NavItem } from '../content/sample-stories';
     <header class="masthead">
       <div class="pf-container">
         <div class="masthead__top">
-          <a class="masthead__brand" href="#top" [attr.aria-label]="brand() + ' home'">
-            {{ brand() }}
-          </a>
+          <p class="masthead__tagline">{{ tagline() }}</p>
           <a class="masthead__cta" href="#about">Follow</a>
         </div>
+        <a class="masthead__brand" href="#top" [attr.aria-label]="brand() + ' home'">
+          <span class="masthead__wordmark">{{ brand() }}</span>
+          <span class="masthead__strike" aria-hidden="true"></span>
+        </a>
         <nav class="masthead__nav" aria-label="Sections">
           <div class="masthead__track">
             @for (item of nav(); track item.href + item.label) {
@@ -31,7 +33,6 @@ import type { NavItem } from '../content/sample-stories';
   `,
   styles: `
     .masthead {
-      /* Solid chrome — same ink as page (no glass / second palette) */
       background: var(--color-bg);
       border-bottom: var(--border-width) solid var(--color-border);
       position: sticky;
@@ -44,20 +45,53 @@ import type { NavItem } from '../content/sample-stories';
       align-items: center;
       justify-content: space-between;
       gap: var(--spacing-4);
-      padding-block: var(--spacing-4);
+      padding-top: var(--spacing-4);
     }
 
+    .masthead__tagline {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.02em;
+      max-width: 18rem;
+      line-height: 1.35;
+    }
+
+    /* Brand is the hero of chrome — centered, display-scale on every viewport */
     .masthead__brand {
-      font-family: var(--font-heading);
-      font-size: clamp(1.65rem, 5vw, 2.35rem);
-      font-weight: 800;
-      letter-spacing: -0.05em;
-      line-height: 1;
-      color: var(--color-text-main);
-      animation: pf-rise var(--transition-normal) var(--ease-out) both;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: fit-content;
+      max-width: 100%;
+      margin-inline: auto;
+      gap: var(--spacing-2);
+      padding-block: var(--spacing-3) var(--spacing-4);
+      text-align: center;
+      animation: pf-brand-in var(--transition-normal) var(--ease-out) both;
     }
 
-    /* Same primary as active pill + bylines — one accent system */
+    .masthead__wordmark {
+      font-family: var(--font-heading);
+      font-size: var(--text-brand);
+      font-weight: 900;
+      font-variation-settings: var(--font-display-settings);
+      letter-spacing: -0.055em;
+      line-height: 0.88;
+      color: var(--color-text-main);
+      text-wrap: balance;
+    }
+
+    .masthead__strike {
+      display: block;
+      width: 5.25rem;
+      height: 3px;
+      margin-inline: auto;
+      background: var(--color-primary);
+      transform-origin: center;
+      animation: pf-strike-grow 420ms var(--ease-out) 120ms both;
+    }
+
     .masthead__cta {
       flex-shrink: 0;
       font-family: var(--font-heading);
@@ -67,7 +101,7 @@ import type { NavItem } from '../content/sample-stories';
       text-transform: uppercase;
       color: var(--color-bg);
       background: var(--color-primary);
-      padding: 0.55rem 0.9rem;
+      padding: 0.55rem 0.95rem;
       border-radius: var(--radius-btn);
       transition: background var(--transition-fast);
     }
@@ -83,6 +117,7 @@ import type { NavItem } from '../content/sample-stories';
 
     .masthead__track {
       display: flex;
+      justify-content: center;
       gap: var(--spacing-1);
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
@@ -91,6 +126,8 @@ import type { NavItem } from '../content/sample-stories';
       background: var(--color-surface);
       border-radius: var(--radius-md);
       border: var(--border-width) solid var(--color-border);
+      max-width: 42rem;
+      margin-inline: auto;
     }
 
     .masthead__track::-webkit-scrollbar {
@@ -99,6 +136,7 @@ import type { NavItem } from '../content/sample-stories';
 
     .masthead__pill {
       flex: 0 0 auto;
+      position: relative;
       font-family: var(--font-heading);
       font-size: 0.6875rem;
       font-weight: 800;
@@ -123,24 +161,78 @@ import type { NavItem } from '../content/sample-stories';
       color: var(--color-primary);
     }
 
+    .masthead__pill:not(.masthead__pill--active)::after {
+      content: '';
+      position: absolute;
+      left: 0.85rem;
+      right: 0.85rem;
+      bottom: 0.28rem;
+      height: 2px;
+      background: var(--color-primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition-fast);
+    }
+
+    .masthead__pill:not(.masthead__pill--active):hover::after,
+    .masthead__pill:not(.masthead__pill--active):focus-visible::after {
+      transform: scaleX(1);
+    }
+
     @media (min-width: 768px) {
       .masthead__top {
-        padding-block: var(--spacing-5) var(--spacing-3);
+        padding-top: var(--spacing-3);
+      }
+
+      .masthead__brand {
+        /* Keep brand loud without eating the lead’s first-viewport budget */
+        padding-block: var(--spacing-2) var(--spacing-3);
+      }
+
+      .masthead__wordmark {
+        /* Desktop title hierarchy: wordmark owns the chrome band */
+        font-size: clamp(3.5rem, 5.8vw, 5.5rem);
+      }
+
+      .masthead__strike {
+        width: 8.75rem;
+        height: 4px;
       }
 
       .masthead__nav {
-        padding-bottom: var(--spacing-5);
+        padding-bottom: var(--spacing-4);
+      }
+
+      .masthead__track {
+        max-width: none;
+        width: 100%;
       }
 
       .masthead__pill {
         font-size: var(--text-xs);
-        padding: 0.6rem 1.05rem;
+        padding: 0.55rem 1.1rem;
+      }
+
+      .masthead__tagline {
+        font-size: var(--text-xs);
+        max-width: 22rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .masthead__tagline {
+        display: none;
+      }
+
+      .masthead__top {
+        justify-content: flex-end;
       }
     }
   `,
 })
 export class MastheadComponent {
   readonly brand = input.required<string>();
+  readonly tagline = input.required<string>();
   readonly nav = input.required<readonly NavItem[]>();
 
   /** Tracks section pill; reseeds when nav content changes. */
