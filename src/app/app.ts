@@ -17,7 +17,7 @@ import { ThemedPackagesComponent } from './layout/themed-packages.component';
   ],
   template: `
     <div id="top" class="shell">
-      <pf-masthead [brand]="content.brand" [nav]="content.nav" />
+      <pf-masthead [brand]="content.brand" [tagline]="content.tagline" [nav]="content.nav" />
       <main>
         <pf-featured-lead [story]="content.featured" />
         <pf-story-river [stories]="content.river" />

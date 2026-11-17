@@ -47,9 +47,11 @@ import { Component, input } from '@angular/core';
 
     .footer__brand {
       font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: var(--text-2xl);
-      letter-spacing: -0.04em;
+      font-weight: 900;
+      font-variation-settings: var(--font-display-settings);
+      font-size: clamp(1.75rem, 3vw, 2.35rem);
+      letter-spacing: -0.045em;
+      line-height: 0.95;
     }
 
     .footer__note {

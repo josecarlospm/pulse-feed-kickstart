@@ -1,6 +1,6 @@
 /* SiteForge Design.md §4.6 — pulse-magazine (Pulse Wire)
-   Kickstart refinements (DRE-126 redesign): wider editorial measure,
-   display type scale, atmosphere helpers. Core palette unchanged. */
+   Kickstart refinements (DRE-126 craft pass): condensed display voice,
+   brand-scale masthead, louder lead measure, atmosphere. Core palette unchanged. */
 :root {
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
@@ -14,7 +14,7 @@
   --spacing-16: 4rem;
   --spacing-20: 5rem;
   /* Magazine measure — room for lead + river density */
-  --container-max-w: 1240px;
+  --container-max-w: 1180px;
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -25,10 +25,13 @@
   --text-3xl: 1.875rem;
   --text-4xl: 2.25rem;
   --text-5xl: 3rem;
-  --text-display: clamp(2.35rem, 6.5vw, 4.35rem);
+  /* Loud condensed display — publisher first-viewport voice */
+  --text-display: clamp(2.75rem, 7.2vw, 5.75rem);
+  --text-brand: clamp(2.4rem, 6.5vw, 4.75rem);
 
-  --line-height-tight: 1.08;
-  --line-height-snug: 1.2;
+  --line-height-display: 0.92;
+  --line-height-tight: 1.02;
+  --line-height-snug: 1.18;
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.65;
 
@@ -54,16 +57,18 @@
   --color-border-strong: rgba(255, 255, 255, 0.2);
   /* Soft atmospheric wash — not flat slab */
   --color-atmosphere: radial-gradient(
-    ellipse 80% 50% at 70% -10%,
-    rgba(200, 255, 42, 0.06),
-    transparent 55%
-  ),
-    radial-gradient(ellipse 60% 40% at 10% 100%, rgba(255, 106, 26, 0.04), transparent 50%),
+      ellipse 70% 45% at 72% -8%,
+      rgba(200, 255, 42, 0.07),
+      transparent 55%
+    ),
+    radial-gradient(ellipse 55% 35% at 8% 95%, rgba(255, 106, 26, 0.045), transparent 50%),
     var(--color-bg);
 
   --font-heading: 'Archivo', system-ui, sans-serif;
   --font-body: 'Source Sans 3', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  /* Condensed display axis for masthead + lead (Archivo variable wdth) */
+  --font-display-settings: 'wdth' 78;
 
   --border-width: 1px;
   --radius-sm: 1px;
@@ -79,5 +84,6 @@
   --shadow-button: 0 2px 8px rgba(200, 255, 42, 0.22);
   --backdrop-blur: 0px;
 
-  --lead-min-h: min(78vh, 680px);
+  /* Lead plane after compact brand chrome — still owns first content viewport */
+  --lead-min-h: min(68vh, 620px);
 }
